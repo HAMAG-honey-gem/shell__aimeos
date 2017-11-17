@@ -23,10 +23,12 @@ if [ ! -z $1 ]; then
 fi
 echo -e "Press [ENTER] to continue or [ESC] to abort"
 echo ""
-for (( i=10; i>0; i--)); do
+t=10
+echo -e "\e[0K\r$action in $t seconds..."
+for (( i=${t}; i>0; i--)); do
 
-	echo -en "\e[1A";  # amend line 1 before
-	echo -e "\e[0K\r$action in $i seconds..."
+#	echo -en "\e[1A";  # amend line 1 before
+
 	read -s -N 1 -t 1 key
 
 	if [ "$key" = $'\e' ]; then
